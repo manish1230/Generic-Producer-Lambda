@@ -39,7 +39,6 @@ const loadWebhookUrlMiddleware = (req, res, next) => __awaiter(void 0, void 0, v
 });
 // ✅ Attach middleware globally
 app.use(loadWebhookUrlMiddleware);
-
 // POST route
 app.post('/publish', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

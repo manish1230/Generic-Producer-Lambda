@@ -35,23 +35,3 @@ class WebhookFetcher {
 }
 exports.WebhookFetcher = WebhookFetcher;
 WebhookFetcher.client = new client_ssm_1.SSMClient({ region: "ap-south-1" });
-//   import { SSMClient, GetParameterCommand } from "@aws-sdk/client-ssm";
-// const ssmClient = new SSMClient({ region: "ap-south-1" });  
-// export async function getWebhookUrl(): Promise<string> {  
-//   const command = new GetParameterCommand({
-//     Name: "WEBHOOK_PATH", // SSM parameter name
-//     WithDecryption: false
-//   });
-//     try {
-//     const response = await ssmClient.send(command);
-//     if (!response.Parameter || !response.Parameter.Value) {
-//       throw new Error("WEBHOOK_PATH parameter is missing or empty in Parameter Store");
-//     }
-//    // console.log(response.Parameter.Value);
-//     return response.Parameter.Value;
-//   } catch (err) {
-//     console.error("Failed to fetch WEBHOOK_PATH from SSM:", err);
-//     throw new Error("Failed to load webhook URL from Parameter Store");
-//   }
-// }
-// //add try catch

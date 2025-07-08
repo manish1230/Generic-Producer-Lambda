@@ -11,7 +11,3 @@ const handler = (event, context) => {
     return aws_serverless_express_1.default.proxy(server, event, context);
 };
 exports.handler = handler;
-// import { APIGatewayProxyHandler } from 'aws-lambda';
-// import serverlessExpress from '@codegenie/serverless-express';
-// import app from './index'; // make sure app.ts exports your express app
-// export const handler: APIGatewayProxyHandler = serverlessExpress({ app });
