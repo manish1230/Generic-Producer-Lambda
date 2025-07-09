@@ -34,13 +34,12 @@ describe('getWebhookUrl (AWS SDK v3)', () => {
             WithDecryption: false
         });
     }));
-    it('should return empty string if Parameter is missing', () => __awaiter(void 0, void 0, void 0, function* () {
-        sendMock.mockResolvedValueOnce({});
-        const url = yield ssmHelper_1.WebhookFetcher.getUrl();
-        expect(url).toBe('');
+    it('should throw error if Parameter is missing', () => __awaiter(void 0, void 0, void 0, function* () {
+        sendMock.mockResolvedValueOnce({ Parameter: {} });
+        yield expect(ssmHelper_1.WebhookFetcher.getUrl()).rejects.toThrow("Could not fetch webhook URL");
     }));
     it('should throw error if SSM call fails', () => __awaiter(void 0, void 0, void 0, function* () {
-        sendMock.mockRejectedValueOnce(new Error('Failed to load webhook URL from SSM'));
-        yield expect(ssmHelper_1.WebhookFetcher.getUrl()).rejects.toThrow('Failed to load webhook URL from SSM');
+        sendMock.mockRejectedValueOnce(new Error('Could not fetch webhook URL'));
+        yield expect(ssmHelper_1.WebhookFetcher.getUrl()).rejects.toThrow('Could not fetch webhook URL');
     }));
 });
