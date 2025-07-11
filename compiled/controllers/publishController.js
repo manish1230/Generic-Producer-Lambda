@@ -30,7 +30,7 @@ const publishHandler = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
     catch (err) {
         logger_1.logger.error(` Publish error: ${err.message}`);
-        res.status(400).send(err.message);
+        res.status(400).json({ message: err.message });
     }
 });
 exports.publishHandler = publishHandler;
