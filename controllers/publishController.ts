@@ -10,8 +10,8 @@ export const publishHandler = async (req: Request, res: Response) => {
     OrderValidator.validate(record);
     const transformed = OrderTransformer.transform(record);
 
-    const webhookPath = (req as any).webhookPath;
-
+     const webhookPath = (req as any).webhookPath;
+       
     await axios.post(webhookPath, transformed, {
       headers: { 'Content-Type': 'application/json' }
     });
@@ -19,6 +19,6 @@ export const publishHandler = async (req: Request, res: Response) => {
     res.status(200).json({ message: 'Published successfully' });
   } catch (err: any) {
     logger.error(` Publish error: ${err.message}`);
-    res.status(400).send(err.message);
+    res.status(400).json({ message: err.message });
   }
 };
